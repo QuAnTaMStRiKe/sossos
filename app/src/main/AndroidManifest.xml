@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sos">
-        <activity android:name=".OnClickUserProfile"></activity>
+        <activity android:name=".OnClickPerInfo"></activity>
+        <activity android:name=".OnClickUserProfile" />
         <activity android:name=".OnClickSOSbtn" />
         <activity android:name=".MainActivity">
             <intent-filter>
