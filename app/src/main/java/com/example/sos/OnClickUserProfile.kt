@@ -13,8 +13,17 @@ class OnClickUserProfile : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-        homeBtn.setOnClickListener {
-            val i = Intent(this, MainActivity::class.java)
+
+        eContacts.setOnClickListener {
+            val i = Intent(this,OnClickEmerContacts::class.java)
+            startActivity(i)
+        }
+        eMsg.setOnClickListener {
+            val i = Intent(this, OnClickEmerMsg::class.java)
+            startActivity(i)
+        }
+        homeBtn1.setOnClickListener {
+            val i = Intent(this,MainActivity::class.java)
             startActivity(i)
         }
     }
