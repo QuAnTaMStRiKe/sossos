@@ -17,10 +17,11 @@
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="9dp"
             android:background="@drawable/rectangle_for_heading"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"></LinearLayout>
 
@@ -36,17 +37,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <Button
             android:id="@+id/backBtn1"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="9dp"
             android:background="@drawable/back_launcher_foreground"
             app:backgroundTint="@color/black"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
             app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
         </Button>
 
@@ -54,8 +59,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="26dp"
             android:text="Emergency Contact"
             android:textSize="35dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,13 +71,12 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="38dp"
             android:text="Emergency Number to be called on"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 
         <TextView
             android:id="@+id/textView5"
@@ -83,25 +87,28 @@
             app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-
         <EditText
             android:id="@+id/editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="31dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="3dp"
             android:hint="Enter Name"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/editText"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="14dp"
+            android:ems="10"
+            android:hint="Enter Phone Number"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.402"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
 
         <Button
             android:id="@+id/saveBtn1"
@@ -118,6 +125,8 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
 </LinearLayout>

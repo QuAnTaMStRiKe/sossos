@@ -9,10 +9,14 @@ class OnClickEmerMsg : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_click_emer_msg)
+        saveBtn2.setOnClickListener {
+            val i = Intent(this, Message::class.java)
+             i.putExtra("Message", editText.text.toString())
+            startActivity(i)
+        }
         backBtn1.setOnClickListener {
             val i = Intent(this, OnClickUserProfile::class.java)
             startActivity(i)
-
         }
     }
 }

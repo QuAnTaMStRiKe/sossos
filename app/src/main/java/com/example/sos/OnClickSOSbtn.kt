@@ -13,6 +13,6 @@ class OnClickSOSbtn : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-        //edr.setText(getIntent)
+
     }
 }

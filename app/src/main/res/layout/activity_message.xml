@@ -6,48 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".contacts">
 
-    <TextView
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="292dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/editText4"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="159dp"
+        android:layout_marginBottom="158dp"
+        android:text="Your Emergency message is: "
+        app:layout_constraintBottom_toBottomOf="@+id/editText5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/backBtnMessage" />
+
+    <TextView
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="92dp"
+        app:layout_constraintBottom_toTopOf="@+id/editData"
+        app:layout_constraintStart_toStartOf="@+id/editData" />
 
     <Button
         android:id="@+id/editData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginBottom="156dp"
         android:background="@drawable/rectangle_data"
         android:text="Edit Data"
         app:backgroundTint="@color/heading_red"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/backBtnContacts"
+        android:id="@+id/backBtnMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="179dp"
-        android:layout_marginBottom="176dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="97dp"
         android:background="@drawable/back_launcher_foreground"
         app:backgroundTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editText4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

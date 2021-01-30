@@ -16,6 +16,7 @@ class OnClickEmerContacts : AppCompatActivity() {
         saveBtn1.setOnClickListener{
             val i = Intent(this,contacts::class.java)
             i.putExtra("Name",editText.text.toString())
+            i.putExtra("Number", editText2.text.toString())
             startActivity(i)
         }
     }
