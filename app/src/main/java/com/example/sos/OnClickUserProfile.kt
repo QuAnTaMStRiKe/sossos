@@ -3,6 +3,7 @@ package com.example.sos
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_contacts.*
 import kotlinx.android.synthetic.main.activity_message.*
 import kotlinx.android.synthetic.main.activity_on_click_user_profile.*
 import java.lang.NullPointerException
@@ -16,21 +17,18 @@ class OnClickUserProfile : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-
-        eContacts.setOnClickListener {
-            val i = Intent(this,OnClickEmerContacts::class.java)
-            startActivity(i)
+       if(editText3 == null && editText4 == null){
+            eContacts.setOnClickListener {
+                val i = Intent(this, contacts::class.java)
+                startActivity(i)
+            }
         }
+
 if(editText5 == null){
     eMsg.setOnClickListener {
-        val i = Intent(this, OnClickEmerMsg::class.java)
+        val i = Intent(this, Message::class.java)
         startActivity(i)
     }
-}else if(editText5 != null){eMsg.setOnClickListener {
-    val i = Intent(this, Message::class.java)
-    startActivity(i)
-}
-
 }
         homeBtn1.setOnClickListener {
             val i = Intent(this,MainActivity::class.java)
