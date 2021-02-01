@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.telephony.SmsManager
 import android.util.Log
@@ -15,14 +17,17 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
     private val TAG = "SMSPermission"
     private val SEND_SMS_CODE = 101
+    private val TAG2 = "SMSPermission"
+    private val SEND_LOCATION_CODE = 102
 
     private fun setupPermissions() {
         val permission = ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.SEND_SMS
+                this,
+                Manifest.permission.SEND_SMS
         )
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -30,18 +35,36 @@ class MainActivity : AppCompatActivity() {
             makeRequest()
         }
     }
+    private fun setupLocationPermissions() {
+        val permission = ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        )
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG2, "Permission to send Location denied")
+            makeLocationRequest()
+        }
+    }
 
     private fun makeRequest() {
         ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.SEND_SMS),
-            SEND_SMS_CODE
+                this,
+                arrayOf(Manifest.permission.SEND_SMS),
+                SEND_SMS_CODE
+        )
+    }
+    private fun makeLocationRequest() {
+        ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                SEND_LOCATION_CODE
         )
     }
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<String>,
+            grantResults: IntArray
     ) {
         when (requestCode) {
             SEND_SMS_CODE -> {
@@ -54,22 +77,50 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         } }
+    /*override fun onRequestLocationPermissionResult(
+            requestCode: Int,
+            permissions: Array<String>,
+            grantResults: IntArray
+    ){
+        when(requestCode){
+            SEND_LOCATION_CODE -> {
+                if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                    Log.i(TAG2, "Permission has been denied by user")
+                }else {
+                    Log.i(TAG2, "Permission has been granted by user")
+                }
+            }
+        }
+    } */
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val sharedPref: SharedPreferences = this.getSharedPreferences(
-            "myKey",
-            Context.MODE_PRIVATE
+                "myKey",
+                Context.MODE_PRIVATE
         )
         setupPermissions()
+        setupLocationPermissions()
     sosBtn.setOnClickListener {
+        val g = GPStracker(applicationContext)
+        val l: Location = g.getLocation()
+       if(l != null){
+           val lat = l.latitude
+           val lon = l.longitude
+           val location_message = "http://maps.google.com/maps?saddr=$lat,$lon"
+           val number: String? = sharedPref.getString("Number", "")
+           val smsManager = SmsManager.getDefault()
+           val smsBody = StringBuffer()
+           smsBody.append(Uri.parse(location_message));
+           SmsManager.getDefault().sendTextMessage(number, null, smsBody.toString(), null,null);
+       }
         val pi = PendingIntent.getActivity(applicationContext, 0, intent, 0)
            val sms: SmsManager = SmsManager.getDefault()
         val number: String? = sharedPref.getString("Number", "")
         val message: String? = sharedPref.getString("Message", "")
-
+      //  sms.sendTextMessage(number,null,message,null,null)
        sms.sendTextMessage(number, null, message, pi, null)
         Toast.makeText(it.context, message, Toast.LENGTH_LONG).show()
 
