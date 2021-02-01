@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
        if(l != null){
            val lat = l.latitude
            val lon = l.longitude
-           val location_message = "http://maps.google.com/maps?saddr=$lat,$lon"
+           val location_message = "http://maps.google.com/maps?q=$lat,$lon"
            val number_1: String? = sharedPref.getString("Number_1", "")
            val number_2: String? = sharedPref.getString("Number_2", "")
            val number_3: String? = sharedPref.getString("Number_3", "")

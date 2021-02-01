@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sos">
-        <activity android:name=".GPStracker"></activity>
+        <activity android:name=".GPStracker"/>
+        tools:ignore="Instantiatable" />
         <activity android:name=".Message" />
         <activity android:name=".contacts" />
         <activity android:name=".OnClickEmerMsg" />
