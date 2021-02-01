@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
 import android.telephony.SmsManager
@@ -76,23 +77,14 @@ class MainActivity : AppCompatActivity() {
                     Log.i(TAG, "Permission has been granted by user")
                 }
             }
-        } }
-    /*override fun onRequestLocationPermissionResult(
-            requestCode: Int,
-            permissions: Array<String>,
-            grantResults: IntArray
-    ){
-        when(requestCode){
             SEND_LOCATION_CODE -> {
-                if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Log.i(TAG2, "Permission has been denied by user")
-                }else {
+                } else {
                     Log.i(TAG2, "Permission has been granted by user")
                 }
             }
-        }
-    } */
-
+        } }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,13 +106,12 @@ class MainActivity : AppCompatActivity() {
            val smsManager = SmsManager.getDefault()
            val smsBody = StringBuffer()
            smsBody.append(Uri.parse(location_message));
-           SmsManager.getDefault().sendTextMessage(number, null, smsBody.toString(), null,null);
+           SmsManager.getDefault().sendTextMessage(number, null, smsBody.toString(), null, null);
        }
         val pi = PendingIntent.getActivity(applicationContext, 0, intent, 0)
            val sms: SmsManager = SmsManager.getDefault()
         val number: String? = sharedPref.getString("Number", "")
         val message: String? = sharedPref.getString("Message", "")
-      //  sms.sendTextMessage(number,null,message,null,null)
        sms.sendTextMessage(number, null, message, pi, null)
         Toast.makeText(it.context, message, Toast.LENGTH_LONG).show()
 
