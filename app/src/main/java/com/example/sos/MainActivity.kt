@@ -102,18 +102,28 @@ class MainActivity : AppCompatActivity() {
            val lat = l.latitude
            val lon = l.longitude
            val location_message = "http://maps.google.com/maps?saddr=$lat,$lon"
-           val number: String? = sharedPref.getString("Number", "")
+           val number_1: String? = sharedPref.getString("Number_1", "")
+           val number_2: String? = sharedPref.getString("Number_2", "")
+           val number_3: String? = sharedPref.getString("Number_3", "")
            val smsManager = SmsManager.getDefault()
            val smsBody = StringBuffer()
            smsBody.append(Uri.parse(location_message));
-           SmsManager.getDefault().sendTextMessage(number, null, smsBody.toString(), null, null);
+           SmsManager.getDefault().sendTextMessage(number_1, null, smsBody.toString(), null, null);
+           SmsManager.getDefault().sendTextMessage(number_2, null, smsBody.toString(), null, null);
+           SmsManager.getDefault().sendTextMessage(number_3, null, smsBody.toString(), null, null);
        }
         val pi = PendingIntent.getActivity(applicationContext, 0, intent, 0)
            val sms: SmsManager = SmsManager.getDefault()
-        val number: String? = sharedPref.getString("Number", "")
+
+        val number_1: String? = sharedPref.getString("Number_1", "")
+        val number_2: String? = sharedPref.getString("Number_2", "")
+        val number_3: String? = sharedPref.getString("Number_3", "")
         val message: String? = sharedPref.getString("Message", "")
-       sms.sendTextMessage(number, null, message, pi, null)
-        Toast.makeText(it.context, message, Toast.LENGTH_LONG).show()
+       sms.sendTextMessage(number_1, null, message, pi, null)
+        sms.sendTextMessage(number_2, null, message, pi, null)
+        sms.sendTextMessage(number_3, null, message, pi, null)
+
+        Toast.makeText(it.context, "Emergency Message Sent", Toast.LENGTH_LONG).show()
 
     }
         UserBtn.setOnClickListener {

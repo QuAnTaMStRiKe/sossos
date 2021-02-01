@@ -15,10 +15,18 @@ class contacts : AppCompatActivity() {
             "myKey",
             Context.MODE_PRIVATE
         )
-        val name: String? = sharedPref.getString("Name", "")
-        val number: String? = sharedPref.getString("Number", "")
-        editText3.text = name.toString()
-        editText4.text = number.toString()
+        val name_1: String? = sharedPref.getString("Name_1", "")
+        val number_1: String? = sharedPref.getString("Number_1", "")
+        val name_2: String? = sharedPref.getString("Name_2", "")
+        val number_2: String? = sharedPref.getString("Number_2", "")
+        val name_3: String? = sharedPref.getString("Name_3", "")
+        val number_3: String? = sharedPref.getString("Number_3", "")
+        name1.text = name_1.toString()
+        number1.text = number_1.toString()
+        name2.text = name_2.toString()
+        number2.text = number_2.toString()
+        name3.text = name_3.toString()
+        number3.text = number_3.toString()
         editData.setOnClickListener {
             val i = Intent(this, OnClickEmerContacts::class.java)
             startActivity(i)

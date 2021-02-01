@@ -17,7 +17,7 @@ class OnClickUserProfile : AppCompatActivity() {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
         }
-       if(editText3 == null && editText4 == null){
+       if(name1 == null && number1 == null){
             eContacts.setOnClickListener {
                 val i = Intent(this, contacts::class.java)
                 startActivity(i)
